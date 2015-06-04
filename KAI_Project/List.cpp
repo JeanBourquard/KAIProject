@@ -1,11 +1,13 @@
 #include "List.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
 List::List()
 {
     first = NULL;
-    last = NULL;
+    //last = NULL;
 }
 
 void List::addElement(int value)
@@ -24,13 +26,13 @@ void List::addElement(int value)
             tmp = tmp->getNext();
         }
         tmp->setNext(newElement);
-        last = newElement;
+//        last = newElement;
     }
     //if the list is empty we set the new element as the first and last element of the list
     else
     {
         first = newElement;
-        last = newElement;
+//        last = newElement;
     }
 }
 
@@ -53,5 +55,37 @@ void List::displayList()
         } while (tmp != NULL);
 
         cout << "list" << endl;
+    }
+}
+
+void List::writeInFile(string filePath)
+{
+    ofstream myStream(filePath.c_str());
+
+
+    if(myStream)
+    {
+        ElementList *tmp = first;
+
+        //if the list is empty
+        if (tmp == NULL)
+        {
+            myStream << "the list is empty" << endl;
+        }
+        //else go through the list and write each element in the file
+        else
+        {
+            do
+            {
+                myStream << tmp->getValue() << " --> ";
+                tmp = tmp->getNext();
+            } while (tmp != NULL);
+
+            myStream << "list" << endl;
+        }
+    }
+    else
+    {
+        cout << "ERROR: cannot open the file." << endl;
     }
 }

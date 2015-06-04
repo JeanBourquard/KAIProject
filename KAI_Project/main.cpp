@@ -5,6 +5,7 @@
 #include <time.h>       //time
 #include "List.h"
 #include <set>
+#include "FileManager.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ void listChoice()
         //display the list
         list.displayList();
     }
+    list.writeInFile("test.txt");
 }
 
 void vectorChoice()
