@@ -60,7 +60,7 @@ void List::displayList()
 
 void List::writeInFile(string filePath)
 {
-    ofstream myStream(filePath.c_str());
+    ofstream myStream(filePath.c_str(), ios::out | ios::app);
 
 
     if(myStream)

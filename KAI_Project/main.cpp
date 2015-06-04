@@ -5,7 +5,6 @@
 #include <time.h>       //time
 #include "List.h"
 #include <set>
-#include "FileManager.h"
 
 using namespace std;
 
@@ -21,7 +20,7 @@ void listChoice()
         //display the list
         list.displayList();
     }
-    list.writeInFile("test.txt");
+    list.writeInFile("C:/Users/K/Documents/GitHub/KAIProject/KAI_Project/test.txt");
 }
 
 void vectorChoice()
