@@ -17,8 +17,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     ElementList.cpp \
-    List.cpp
+    List.cpp \
+    ElementHeap.cpp \
+    Heap.cpp
 
 HEADERS += \
     ElementList.h \
-    List.h
+    List.h \
+    ElementHeap.h \
+    Heap.h

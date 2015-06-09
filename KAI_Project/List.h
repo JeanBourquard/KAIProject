@@ -10,9 +10,12 @@ public:
     void addElement(int value);
     void displayList();
     void writeInFile(std::string filePath);
+    void readInFile(std::string filePath);
+    void createListFromFile(std::string fileLine);
 
 private:
         ElementList* first;
+        std::string data;
         //ElementList* last;
 };
 

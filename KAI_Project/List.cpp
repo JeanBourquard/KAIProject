@@ -1,6 +1,10 @@
 #include "List.h"
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <algorithm>
+
 
 using namespace std;
 
@@ -60,7 +64,7 @@ void List::displayList()
 
 void List::writeInFile(string filePath)
 {
-    ofstream myStream(filePath.c_str(), ios::out | ios::app);
+    ofstream myStream(filePath.c_str()/*, ios::out | ios::app*/);
 
 
     if(myStream)
@@ -70,22 +74,50 @@ void List::writeInFile(string filePath)
         //if the list is empty
         if (tmp == NULL)
         {
-            myStream << "the list is empty" << endl;
+            myStream << "list" << endl;
         }
         //else go through the list and write each element in the file
         else
         {
             do
             {
-                myStream << tmp->getValue() << " --> ";
+                myStream << tmp->getValue() << endl;
                 tmp = tmp->getNext();
             } while (tmp != NULL);
 
             myStream << "list" << endl;
         }
+        myStream.close();
     }
     else
     {
         cout << "ERROR: cannot open the file." << endl;
     }
+}
+
+void List::readInFile(string filePath)
+{
+    ifstream myStream(filePath.c_str());
+
+    if(myStream)
+    {
+        //int i=0;
+        string line;
+                while(getline(myStream, line))  // as long as there is content
+                {
+                    if (line != "list")
+                    {
+                        addElement(atoi(line.c_str())); //each line corresponds to an element of the list so for each line we create a new element and we add it to the list
+                        displayList(); //then we display the list
+                    }
+
+                }
+
+        myStream.close(); //close the stream used to read the file
+    }
+    else //if the stream does not work then display an Error message
+    {
+        cerr << "ERROR: cannot open the file." << endl;
+    }
+
 }
